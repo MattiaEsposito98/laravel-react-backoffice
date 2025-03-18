@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Console;
 use App\Models\User;
+use App\Models\VideoGames;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +20,12 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        $this->call([
+            VideoGamesTableSeeder::class,
+            ConsoleTableSeeder::class,
+
         ]);
     }
 }
