@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class VideoGames extends Model
 {
-    public function console()
+    public function consoles()
     {
-        return $this->belongsToMany(Console::class);
+        return $this->belongsToMany(Console::class, 'console_video_game', 'video_game_id', 'console_id');
     }
 }
