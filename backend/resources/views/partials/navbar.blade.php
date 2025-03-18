@@ -1,20 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        {{-- <a class="navbar-brand" href="#"><span class="badge text-bg-danger">Admin</span>
-        </a> --}}
-        <a class="navbar-brand" href="#"><img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin"> </a>
-        <div class="navbar-brand">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a class="nav-link disabled" href="#">Home
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin">
+        </a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled border-rounded" href="#"><span
+                        class="badge border fs-6 text-bg-light">Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                @if (Auth::check())
+                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                        <span class="badge fs-6 text-bg-dark">Profilo</span>
                     </a>
-                </li>
-                <li class="nav-item">
+                @else
                     <a class="nav-link" href="{{ route('login') }}">
                         <span class="badge fs-6 text-bg-dark">Login</span>
                     </a>
-                </li>
-            </ul>
-        </div>
+                @endif
+            </li>
+        </ul>
     </div>
 </nav>
