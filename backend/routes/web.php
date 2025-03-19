@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController; // Assicurati che il nome del controller sia corretto
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\VideoGamesController;
 use App\Http\Controllers\ProfileController;
+use App\Models\VideoGames;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,3 +29,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])
             ->name('index');
     });
+
+// CRUD
+Route::resource('videogames', VideoGamesController::class)
+    ->middleware(['auth', 'verified']);
