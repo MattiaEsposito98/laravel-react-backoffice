@@ -5,9 +5,8 @@ use App\Http\Controllers\Admin\VideoGameController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layouts.layout');
-});
+// Rotta per la homepage
+Route::get('/', [VideoGameController::class, 'index'])->name('videogames.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

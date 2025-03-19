@@ -21,6 +21,14 @@
                         @endif
                     @endforeach
                 </div>
+                <div id="buttons">
+                    <a href="">
+                        <button type="button" class="btn btn-danger">Elimina</button>
+                    </a>
+                    <a href="">
+                        <button type="button" class="btn btn-warning">Modifica</button>
+                    </a>
+                </div>
 
             </article>
 
