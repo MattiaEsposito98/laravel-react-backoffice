@@ -12,7 +12,7 @@
                 Nessun videogioco trovato.
             </div>
         @else
-            <table class="table table-striped table-hover table-bordered">
+            <table class="table table-striped table-hover table-bordered text-center align-middle">
                 <thead class="table-danger">
                     <tr>
                         <th>Titolo</th>
@@ -42,7 +42,9 @@
                                     </ul>
                                 @endif
                             </td>
-                            <td><a href="{{ route('videogames.show', $videoGame->id) }}">Visualizza</a></td>
+                            <td><a href="{{ route('videogames.show', $videoGame->id) }}">
+                                    <button type="button" class="btn btn-outline-secondary">Visualizza</button>
+                                </a></td>
                         </tr>
                     @endforeach
                 </tbody>
