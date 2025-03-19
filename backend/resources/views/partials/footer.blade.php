@@ -1,4 +1,4 @@
-<footer class="bg-secondary text-light py-4">
+<footer class=" text-light py-4" id="footer">
     <div class="container text-center">
         <p class="mb-0">&copy; {{ date('Y') }} Nome della tua Azienda. Tutti i diritti riservati.</p>
         <ul class="list-inline">

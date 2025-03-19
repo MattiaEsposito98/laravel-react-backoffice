@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Backoffice')</title>
     @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="./scss/app.scss">
 </head>
 
-<body class="bg-secondary-subtle d-flex flex-column min-vh-100">
+<body class="bg-primary-subtle d-flex flex-column min-vh-100">
 
     {{-- Navbar --}}
     <header>
@@ -19,6 +18,7 @@
 
     {{-- Main --}}
     <main class="container-fluid flex-grow-1">
+
         @if (Auth::check())
             @yield('content')
         @else

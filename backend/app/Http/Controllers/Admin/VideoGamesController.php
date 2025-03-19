@@ -14,8 +14,8 @@ class VideoGamesController extends Controller
     public function index()
     {
         // $videogames = VideoGames::all();
-        $videogames = VideoGames::with('consoles',)->get();
-        return view('videogames.index', compact('videogames'));
+        $videoGames = VideoGames::with('consoles',)->get();
+        return view('videogames.index', compact('videoGames'));
     }
 
     /**
@@ -37,9 +37,9 @@ class VideoGamesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(VideoGames $videogame)
     {
-        return 'sei nella show';
+        return view('videogames.show', compact('videogame'));
     }
 
     /**

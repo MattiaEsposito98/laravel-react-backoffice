@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-light" id="header">
     <div class="container">
         <a class="navbar-brand" href="{{ route('videogames.index') }}">
             {{-- <img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin" --}}
@@ -26,11 +26,11 @@
             <li class="nav-item">
                 @if (Auth::check())
                     <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <span class="badge fs-6 text-bg-dark">Profilo</span>
+                        <span class="badge border fs-6 text-bg-dark">Profilo</span>
                     </a>
                 @else
                     <a class="nav-link" href="{{ route('login') }}">
-                        <span class="badge fs-6 text-bg-dark">Login</span>
+                        <span class="badge border fs-6 text-bg-dark">Login</span>
                     </a>
                 @endif
             </li>
