@@ -11,3 +11,34 @@
  #table {
   background-color: 		#000000 !important;
  }
+
+ #article-show {
+  position: relative;
+}
+
+#rating {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  z-index: 1;
+
+  padding: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size:20px
+}
+
+#consoles {
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+
+   span {
+    cursor:default !important;
+  }
+}
+
+
+

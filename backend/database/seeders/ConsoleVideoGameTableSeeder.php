@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Console;
-use App\Models\VideoGames;
+use App\Models\VideoGame;
 use Illuminate\Database\Seeder;
 
 class ConsoleVideoGameTableSeeder extends Seeder
@@ -15,7 +15,7 @@ class ConsoleVideoGameTableSeeder extends Seeder
     {
 
         $consoles = Console::all();
-        $videoGames = VideoGames::all();
+        $videoGames = VideoGame::all();
 
         foreach ($videoGames as $videoGame) {
 

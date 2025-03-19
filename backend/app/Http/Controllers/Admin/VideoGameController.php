@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\VideoGames;
+use App\Models\VideoGame;
 use Illuminate\Http\Request;
 
-class VideoGamesController extends Controller
+class VideoGameController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $videogames = VideoGames::all();
-        $videoGames = VideoGames::with('consoles',)->get();
+
+        // $videogames = VideoGame::all();
+        $videoGames = VideoGame::with('consoles',)->get();
         return view('videogames.index', compact('videoGames'));
     }
 
@@ -37,9 +38,12 @@ class VideoGamesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VideoGames $videogame)
+    public function show(VideoGame $videogame)
     {
-        return view('videogames.show', compact('videogame'));
+
+        $consoles = $videogame->consoles;
+
+        return view('videogames.show', compact('videogame', 'consoles'));
     }
 
     /**

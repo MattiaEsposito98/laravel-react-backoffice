@@ -42,7 +42,7 @@
                                     </ul>
                                 @endif
                             </td>
-                            <td><a href="{{ route('videogames.show', $videogame->id) }}">Visualizza</a></td>
+                            <td><a href="{{ route('videogames.show', $videoGame->id) }}">Visualizza</a></td>
                         </tr>
                     @endforeach
                 </tbody>
