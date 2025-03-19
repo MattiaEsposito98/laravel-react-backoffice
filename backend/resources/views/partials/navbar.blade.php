@@ -4,11 +4,14 @@
             <img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin">
         </a>
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link disabled border-rounded" href="#"><span
-                        class="badge border fs-6 text-bg-light">Home</span>
-                </a>
-            </li>
+            @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.index') }}">
+                        <span class="badge border fs-6 text-bg-light">Home</span>
+                    </a>
+                </li>
+            @endif
+
             <li class="nav-item">
                 @if (Auth::check())
                     <a class="nav-link" href="{{ route('profile.edit') }}">

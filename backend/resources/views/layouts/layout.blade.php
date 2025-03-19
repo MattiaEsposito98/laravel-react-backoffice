@@ -19,7 +19,17 @@
 
     {{-- Main --}}
     <main class="container-fluid flex-grow-1">
-        @yield('content')
+        @if (Auth::check())
+            @yield('content')
+        @else
+            <div class=" mt-5 d-flex flex-column gap-2 justify-content-center align-items-center ">
+                <h1>Effettua il login per accedere alla dashboard</h1>
+                <a href="{{ route('login') }}">
+                    <button type="button" class="btn btn-primary">Login</button>
+                </a>
+            </div>
+        @endif
+
     </main>
 
     {{-- Footer --}}
