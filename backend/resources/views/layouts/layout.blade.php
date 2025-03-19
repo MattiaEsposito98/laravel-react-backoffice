@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Backoffice')</title>
     @vite(['resources/js/app.js'])
-
+    <link rel="stylesheet" href="./scss/app.scss">
 </head>
 
 <body class="bg-secondary-subtle d-flex flex-column min-vh-100">
@@ -23,7 +23,7 @@
             @yield('content')
         @else
             <div class=" mt-5 d-flex flex-column gap-2 justify-content-center align-items-center ">
-                <h1>Effettua il login per accedere alla dashboard</h1>
+                <h1>Effettua il login per accedere</h1>
                 <a href="{{ route('login') }}">
                     <button type="button" class="btn btn-primary">Login</button>
                 </a>

@@ -39,7 +39,7 @@ class VideoGamesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return 'sei nella show';
     }
 
     /**

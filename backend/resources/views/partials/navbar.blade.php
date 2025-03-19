@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container">
         <a class="navbar-brand" href="{{ route('videogames.index') }}">
-            <img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin">
+            {{-- <img src="{{ asset('image/admin.jpg') }}" width="70" alt="admin" --}}
+            <span class="badge fs-6 text-bg-danger">Admin</span>
         </a>
         <ul class="navbar-nav ms-auto">
             @if (Auth::check())

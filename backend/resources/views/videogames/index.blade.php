@@ -10,7 +10,7 @@
                 Nessun videogioco trovato.
             </div>
         @else
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="table-danger">
                     <tr>
                         <th>Titolo</th>
@@ -20,12 +20,13 @@
                         <th>Console</th>
                     </tr>
                 </thead>
-                <tbody class="table-light">
+                <tbody class="table-light ">
                     @foreach ($videogames as $videogame)
                         <tr>
                             <td>{{ $videogame->title }}</td>
                             <td>{{ $videogame->genre }}</td>
                             <td>{{ \Carbon\Carbon::parse($videogame->release_date)->format('d/m/Y') }}</td>
+                            {{-- Carbon libreria di PHP che formatta e aiuta a formattare le date con il metodo parse() --}}
                             <td>{{ $videogame->rating ?? 'N/A' }}</td>
                             <td>
                                 @if ($videogame->consoles->isEmpty())
