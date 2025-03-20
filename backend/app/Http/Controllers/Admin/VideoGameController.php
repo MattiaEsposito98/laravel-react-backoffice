@@ -94,7 +94,7 @@ class VideoGameController extends Controller
         // dd($data);
         $videogame->title = $data['title'];
 
-        // Mantieni il valore esistente se il campo `genre` non viene inviato
+
         if (!isset($data['genre'])) {
             $data['genre'] = $videogame->genre;
         }
@@ -117,8 +117,14 @@ class VideoGameController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(VideoGame $videogame)
     {
-        //
+
+        if ($videogame->image) {
+            Storage::delete('public/' . $videogame->image);
+        }
+        $videogame->consoles()->detach();
+        $videogame->delete();
+        return redirect()->route('videogames.index');
     }
 }
