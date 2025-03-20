@@ -46,6 +46,22 @@
   left: 1px;
 }
 
+.button-dark {
+  padding: 8px 12px;
+  color: white;
+  background-color: #333;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.button-dark:hover {
+  background-color: #444;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 
 
 

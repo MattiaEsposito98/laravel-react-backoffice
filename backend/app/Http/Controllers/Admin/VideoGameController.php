@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Console;
 use App\Models\VideoGame;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class VideoGameController extends Controller
      */
     public function create()
     {
-        //
+        $genres = ['Azione', 'Avventura', 'GDR', 'Sparatutto', 'Sport', 'Corsa', 'Strategia', 'Horror', 'Platform', 'Puzzle', 'Indie', 'MMO', 'Battle Royale'];
+        $consoles = Console::all();
+        return view('videogames.create', compact('consoles', 'genres'));
     }
 
     /**
