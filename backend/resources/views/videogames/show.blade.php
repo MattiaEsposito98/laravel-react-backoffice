@@ -12,17 +12,28 @@
 
                 <span id="rating">{{ $videogame->rating ? $videogame->rating : 'N/A' }}</span>
                 <div id="consoles">
-                    @foreach ($consoles as $console)
-                        @if ($console->name === 'Playstation 4' || $console->name === 'Playstation 5')
-                            <span class="btn btn-primary fw-bold">{{ $console->name }}</span>
-                        @elseif ($console->name === 'Nintendo Switch')
-                            <span class="btn btn-danger fw-bold">{{ $console->name }}</span>
-                        @elseif ($console->name === 'Xbox series S' || $console->name === 'Xbox One')
-                            <span class="btn btn-success fw-bold">{{ $console->name }}</span>
-                        @elseif ($console->name === 'PC')
-                            <span class="btn btn-dark fw-bold">{{ $console->name }}</span>
-                        @endif
-                    @endforeach
+                    @php
+                        $consoleClasses = [
+                            'Playstation 4' => 'btn-primary',
+                            'Playstation 5' => 'btn-primary',
+                            'Nintendo Switch' => 'btn-danger',
+                            'Xbox series S' => 'btn-success',
+                            'Xbox One' => 'btn-success',
+                            'PC' => 'btn-dark',
+                        ];
+                    @endphp
+
+                    @if ($videogame->consoles->isEmpty())
+                        <span class="btn btn-secondary fw-bold">Nessuna console associata</span>
+                    @else
+                        @foreach ($videogame->consoles as $console)
+                            @php
+                                $class = $consoleClasses[$console->name] ?? 'btn-dark';
+                            @endphp
+                            <span class="btn {{ $class }} fw-bold">{{ $console->name }}</span>
+                        @endforeach
+                    @endif
+
                 </div>
                 <div id="buttons">
                     <a href="">
