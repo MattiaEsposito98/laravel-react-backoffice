@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoGameController extends Controller
 {
+
+    //  Funzione per creare un array di genere
+    private function getGenres()
+    {
+        return ['Azione', 'Avventura', 'GDR', 'Sparatutto', 'Sport', 'Corsa', 'Strategia', 'Horror', 'Platform', 'Puzzle', 'Indie', 'MMO', 'Battle Royale'];
+    }
+
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
 
@@ -26,7 +34,7 @@ class VideoGameController extends Controller
      */
     public function create()
     {
-        $genres = ['Azione', 'Avventura', 'GDR', 'Sparatutto', 'Sport', 'Corsa', 'Strategia', 'Horror', 'Platform', 'Puzzle', 'Indie', 'MMO', 'Battle Royale'];
+        $genres = $this->getGenres();
         $consoles = Console::all();
         return view('videogames.create', compact('consoles', 'genres'));
     }
@@ -41,10 +49,11 @@ class VideoGameController extends Controller
         $newvideoGame = new VideoGame();
         $newvideoGame->title = $data['title'];
         $newvideoGame->genre = $data['genre'];
-        $newvideoGame->release_date = $data['date'];
+        $newvideoGame->release_date = $data['release_date'];
         $newvideoGame->description = $data['description'];
         if (array_key_exists('image', $data)) {
             $img_url = Storage::putFile('uploads', $data['image']);
+            $newvideoGame->image = $img_url;
         }
         $newvideoGame->save();
 
@@ -69,17 +78,40 @@ class VideoGameController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(VideoGame $videogame)
     {
-        //
+        $consoles = Console::all();
+        $genres = $this->getGenres();
+        return view('videogames.edit', compact('videogame', 'consoles', 'genres'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, VideoGame $videogame)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $videogame->title = $data['title'];
+
+        // Mantieni il valore esistente se il campo `genre` non viene inviato
+        if (!isset($data['genre'])) {
+            $data['genre'] = $videogame->genre;
+        }
+
+        $videogame->release_date = $data['release_date'];
+        $videogame->description = $data['description'];
+
+        if (array_key_exists('image', $data)) {
+            Storage::delete('public/' . $videogame->image);
+            $img_url = Storage::putFile('uploads', $data['image']);
+            $videogame->image = $img_url;
+        }
+        $videogame->update();
+
+        $videogame->consoles()->sync($request->input('consoles'));
+
+        return redirect()->route('videogames.show', $videogame);
     }
 
     /**

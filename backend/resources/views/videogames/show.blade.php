@@ -5,8 +5,11 @@
     <div class="container">
         <div class="card m-1 shadow-lg border-0 overflow-hidden" style="max-width: 100%;">
             <article id="article-show">
-                <img src="{{ asset('image/god.png') }}" class="card-img-top img-fluid object-fit-fill" style="height: 500px;"
-                    alt="{{ $videogame->name }}">
+                {{-- <img src="{{ asset('image/god.png') }}" class="card-img-top img-fluid object-fit-fill" style="height: 500px;"
+                    alt="{{ $videogame->name }}"> --}}
+                <img src="{{ Str::startsWith($videogame->image, 'uploads/') ? asset('storage/' . $videogame->image) : asset('image/placeholder.png') }}"
+                    alt="Copertina del videogioco" class="card-img-top img-fluid object-fit-fill" style="height: 500px;">
+
                 <span id="rating">{{ $videogame->rating ? $videogame->rating : 'N/A' }}</span>
                 <div id="consoles">
                     @foreach ($consoles as $console)
@@ -25,7 +28,7 @@
                     <a href="">
                         <button type="button" class="btn btn-danger">Elimina</button>
                     </a>
-                    <a href="">
+                    <a href="{{ route('videogames.edit', $videogame) }}">
                         <button type="button" class="btn btn-warning">Modifica</button>
                     </a>
                 </div>
