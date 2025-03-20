@@ -7,7 +7,7 @@
             <article id="article-show">
                 <img src="{{ asset('image/god.png') }}" class="card-img-top img-fluid object-fit-fill" style="height: 500px;"
                     alt="{{ $videogame->name }}">
-                <span id="rating">{{ $videogame->rating }}</span>
+                <span id="rating">{{ $videogame->rating ? $videogame->rating : 'N/A' }}</span>
                 <div id="consoles">
                     @foreach ($consoles as $console)
                         @if ($console->name === 'Playstation 4' || $console->name === 'Playstation 5')

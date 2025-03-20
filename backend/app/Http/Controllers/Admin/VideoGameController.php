@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Console;
 use App\Models\VideoGame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VideoGameController extends Controller
 {
@@ -35,7 +36,23 @@ class VideoGameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $newvideoGame = new VideoGame();
+        $newvideoGame->title = $data['title'];
+        $newvideoGame->genre = $data['genre'];
+        $newvideoGame->release_date = $data['date'];
+        $newvideoGame->description = $data['description'];
+        if (array_key_exists('image', $data)) {
+            $img_url = Storage::putFile('uploads', $data['image']);
+        }
+        $newvideoGame->save();
+
+        if ($request->has('consoles')) {
+            $newvideoGame->consoles()->attach($data['consoles']);
+        }
+
+        return redirect()->route('videogames.show', $newvideoGame);
     }
 
     /**
