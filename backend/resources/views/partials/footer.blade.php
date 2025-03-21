@@ -19,14 +19,3 @@
         </div>
     </div>
 </footer>
-{{-- <footer class="bg-secondary text-light py-3">
-    <div class="container text-center">
-        <p class="mb-0">© {{ date('Y') }} La tua Azienda. Tutti i diritti riservati.</p>
-        <p class="mb-0">
-            <a href="{{ route('videogames.index') }}" class="text-light">Home</a> |
-            <a href="{{ route('admin.index') }}" class="text-light">Dashboard</a> |
-            <a href="{{ route('profile.edit') }}" class="text-light">Profilo</a> |
-            <a href="{{ route('login') }}" class="text-light">Login</a>
-        </p>
-    </div>
-</footer> --}}
