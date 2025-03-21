@@ -5,17 +5,20 @@ export const GlobalContext = createContext()
 
 export default function GlobalProvider({ children }) {
   const [videoGames, setVideoGames] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   function fetchVideoGames() {
+    setIsLoading(true)
     axios.
-      get(`import.meta.env.API_URL`)
+      get(`${import.meta.env.API_URL}`)
       .then(res => {
         console.log('Dati ricevuti', res)
         setVideoGames(res.data.data)
       })
       .catch(err => {
         console.error(err);
-      });
+      })
+      .finally(() => setIsLoading(false))
   };
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export default function GlobalProvider({ children }) {
   console.log(videoGames)
 
   return (
-    <GlobalContext.Provider value={{ videoGames, fetchVideoGames }}>
+    <GlobalContext.Provider value={{ videoGames, fetchVideoGames, isLoading, setIsLoading }}>
       {children}
     </GlobalContext.Provider>
   );
