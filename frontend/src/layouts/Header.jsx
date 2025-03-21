@@ -2,7 +2,7 @@ import CustomNavbar from "../components/Navbar";
 
 export default function Header() {
   return (
-    <header className="bg-secondary">
+    <header id="header">
       <div className="container">
         <CustomNavbar />
       </div>

@@ -2,10 +2,10 @@ import { Navbar, Container, Form, Button, Nav, NavDropdown } from 'react-bootstr
 
 export default function CustomNavbar() {
   return (
-    <Navbar expand="lg" bg="secondary">
+    <Navbar expand="lg" >
       <Container fluid >
         <Navbar.Brand href="#" className='text-white border rounded p-2 fw-bold'>VideoGames</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        < Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto">
             <Nav.Link href="#action1" className='text-white border btn btn-outline-secondary' disabled>Home</Nav.Link>
@@ -21,7 +21,7 @@ export default function CustomNavbar() {
             <Button variant="dark">Cerca</Button>
           </Form>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      </Container >
+    </Navbar >
   );
 }

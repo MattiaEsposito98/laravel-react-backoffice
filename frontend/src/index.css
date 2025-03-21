@@ -1,8 +1,15 @@
 body{
-  background-color: rgba(82, 76, 76, 0.336) !important;
+  background-color: rgba(117, 41, 41, 0.644) !important;
 }
 
 .underline-text{
   text-decoration: underline !important;
 }
 
+#footer {
+  background-color: rgb(226, 79, 79) ;
+}
+
+#header {
+  background-color:rgb(226, 79, 79) ;
+}

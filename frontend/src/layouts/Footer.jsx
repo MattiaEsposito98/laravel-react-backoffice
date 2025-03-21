@@ -1,7 +1,7 @@
 
 export default function Footer() {
   return (
-    <footer className="text-light py-4 bg-secondary" id="footer">
+    <footer className="text-light py-4 mt-2" id="footer">
       <div className="container text-center">
         <p className="mb-0">&copy; {new Date().getFullYear()} Nome della tua Azienda. Tutti i diritti riservati.</p>
         <ul className="list-inline">
