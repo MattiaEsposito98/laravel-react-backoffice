@@ -13,7 +13,7 @@ class VideoGamesController extends Controller
         $videoGames = VideoGame::with('consoles')->get();
         return response()->json([
             "success" => "true",
-            "data" => "videoGames"
+            "data" => $videoGames
         ]);
     }
 

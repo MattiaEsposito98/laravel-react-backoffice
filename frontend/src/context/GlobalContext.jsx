@@ -9,29 +9,22 @@ export default function GlobalProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true)
 
   function fetchVideoGames() {
-    setIsLoading(true)
-    axios.
-      get(`${import.meta.env.API_URL}/5`
-        , {
-          params: {
-            search: search
-          }
-        })
+    setIsLoading(true);
+    const params = search ? { search } : {};
+    axios.get(import.meta.env.VITE_API_URL, { params })
       .then(res => {
-        console.log('Dati ricevuti', res)
-        setVideoGames(res.data)
+        setVideoGames(res.data.data);
       })
       .catch(err => {
         console.error(err);
       })
-      .finally(() => setIsLoading(false))
-  };
+      .finally(() => setIsLoading(false));
+  }
+
 
   useEffect(() => {
     fetchVideoGames();
   }, []);
-
-  console.log(videoGames)
 
   return (
     <GlobalContext.Provider value={{ videoGames, fetchVideoGames, isLoading, setIsLoading }}>
