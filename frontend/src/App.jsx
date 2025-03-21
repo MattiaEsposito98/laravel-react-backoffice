@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min"
 import GlobalProvider from './context/GlobalContext'
-import Header from "./layouts/Header"
+import DefaultLayout from "./layouts/DefaultLayout";
 function App() {
 
   return (
@@ -10,7 +10,7 @@ function App() {
       <GlobalProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" Component={Header}></Route>
+            <Route path="/" Component={DefaultLayout}></Route>
           </Routes>
         </BrowserRouter>
       </GlobalProvider >

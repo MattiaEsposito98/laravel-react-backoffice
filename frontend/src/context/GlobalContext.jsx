@@ -5,15 +5,21 @@ export const GlobalContext = createContext()
 
 export default function GlobalProvider({ children }) {
   const [videoGames, setVideoGames] = useState([])
+  const [search, setSearch] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
   function fetchVideoGames() {
     setIsLoading(true)
     axios.
-      get(`${import.meta.env.API_URL}`)
+      get(`${import.meta.env.API_URL}/5`
+        , {
+          params: {
+            search: search
+          }
+        })
       .then(res => {
         console.log('Dati ricevuti', res)
-        setVideoGames(res.data.data)
+        setVideoGames(res.data)
       })
       .catch(err => {
         console.error(err);
