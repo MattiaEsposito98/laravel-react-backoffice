@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation } from '@fortawesome/free-brands-svg-icons';
 import { faXbox } from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
 
 function CardCustom({ game }) {
   const displayedConsoles = new Set(); // Per tenere traccia delle console già visualizzate
@@ -13,7 +14,7 @@ function CardCustom({ game }) {
     <Card className={style.card}>
       <Card.Img
         variant="top"
-        src={game.image ? `http://127.0.0.1:8000/${game.image}` : './public/placeholder.png'}
+        src={game.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/${game.image}` : './public/placeholder.png'}
         className={style.cardImg}
       />
       <Card.Body className={style.cardBody}>
@@ -39,7 +40,9 @@ function CardCustom({ game }) {
             return null;
           })}
         </Card.Text>
-        <Button variant="primary" className={style.btnPrimary}>Dettagli</Button>
+        <Link to={`/${game.id}`}>
+          <Button variant="primary" className={style.btnPrimary}>Dettagli</Button>
+        </Link>
 
 
 

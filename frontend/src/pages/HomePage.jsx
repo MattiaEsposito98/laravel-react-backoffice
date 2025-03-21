@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalContext"
 import CardCustom from "../components/CardCustom"
 
 export default function HomePage() {
-  const { videoGames, search, setSearch } = useContext(GlobalContext)
+  const { videoGames } = useContext(GlobalContext)
   return (
     <>
       <div className="container">
