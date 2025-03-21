@@ -29,7 +29,7 @@
                     <input type="file" name="image" id="image">
                 </div>
                 <img class="w-25"
-                    src="{{ Str::startsWith($videogame->image, 'uploads/') ? asset('storage/' . $videogame->image) : asset('image/placeholder.png') }}"
+                    src="{{ $videogame->image ? asset($videogame->image) : asset('image/placeholder.png') }}"
                     alt="Copertina videogioco">
             </section>
 
@@ -77,6 +77,13 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea type="text" class="form-control" id="description" name="description">{{ $videogame->description }}  </textarea>
+            </div>
+
+            {{-- Rating --}}
+            <div class="mb-3">
+                <label for="ratingInput">Inserisci la valutazione</label>
+                <input type="number"step="0.1" name="rating" id="ratingInput" min="0" max="10.0"
+                    value="{{ $videogame->rating }}">
             </div>
 
             <div class="d-flex justify-content-center">

@@ -50,6 +50,12 @@
                 <textarea class="form-control" id="description" name="description" required></textarea>
             </div>
 
+            {{-- Rating --}}
+            <div class="mb-3">
+                <label for="ratingInput">Inserisci la valutazione</label>
+                <input type="number"step="0.1" name="rating" id="ratingInput" min="0" max="10.0">
+            </div>
+
 
             <div class="d-flex justify-content-center">
                 <input type="submit" value="Salva" class="btn btn-outline-dark">

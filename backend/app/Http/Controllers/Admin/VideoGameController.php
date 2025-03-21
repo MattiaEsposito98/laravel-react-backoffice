@@ -51,9 +51,10 @@ class VideoGameController extends Controller
         $newvideoGame->genre = $data['genre'];
         $newvideoGame->release_date = $data['release_date'];
         $newvideoGame->description = $data['description'];
+        $newvideoGame->rating = $data['rating'];
         if (array_key_exists('image', $data)) {
             $img_url = Storage::putFile('uploads', $data['image']);
-            $newvideoGame->image = 'storage/' . $img_url; // Restituisci l'URL corretto
+            $newvideoGame->image = 'storage/' . $img_url;
         }
         $newvideoGame->save();
 
@@ -90,29 +91,39 @@ class VideoGameController extends Controller
      */
     public function update(Request $request, VideoGame $videogame)
     {
-        $data = $request->all();
-        // dd($data);
-        $videogame->title = $data['title'];
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'genre' => 'nullable|string|max:255', // Assicurati che sia nullable
+            'release_date' => 'required|date',
+            'description' => 'nullable|string',
+            'rating' => 'nullable|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
+        $videogame->title = $request->input('title');
+        $videogame->genre = $request->input('genre') ?? $videogame->genre; // Usa il valore attuale se non fornito
+        $videogame->release_date = $request->input('release_date');
+        $videogame->description = $request->input('description');
+        $videogame->rating = $request->input('rating');
 
-        if (!isset($data['genre'])) {
-            $data['genre'] = $videogame->genre;
+        if ($request->hasFile('image')) {
+            // Elimina l'immagine precedente se esiste
+            if ($videogame->image) {
+                Storage::delete($videogame->image);
+            }
+            // Carica la nuova immagine
+            $img_url = Storage::putFile('uploads', $request->file('image'));
+            $videogame->image = 'storage/' . $img_url;
         }
 
-        $videogame->release_date = $data['release_date'];
-        $videogame->description = $data['description'];
-
-        if (array_key_exists('image', $data)) {
-            Storage::delete('public/' . $videogame->image);
-            $img_url = Storage::putFile('uploads', $data['image']);
-            $videogame->image = $img_url;
-        }
-        $videogame->update();
+        $videogame->save(); // Salva le modifiche
 
         $videogame->consoles()->sync($request->input('consoles'));
 
         return redirect()->route('videogames.show', $videogame);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
