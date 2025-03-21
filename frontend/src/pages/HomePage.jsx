@@ -7,10 +7,17 @@ export default function HomePage() {
   return (
     <>
       <div className="container">
-        {videoGames.map((game => (
-          <CardCustom key={game.id} game={game} />
-        )))}
+        <div className="row">
+
+          {videoGames.map((game => (
+            <div key={game.id} className="col-4 mt-2 ">
+              <CardCustom game={game} />
+            </div>
+          )))}
+
+        </div>
       </div>
+
     </>
 
   )

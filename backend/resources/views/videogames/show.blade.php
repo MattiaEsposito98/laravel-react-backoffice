@@ -4,8 +4,9 @@
     <div class="container">
         <div class="card m-1 shadow-lg border-0 overflow-hidden" style="max-width: 100%;">
             <article id="article-show">
-                <img src="{{ Str::startsWith($videogame->image, 'uploads/') ? asset('storage/' . $videogame->image) : asset('image/placeholder.png') }}"
+                <img src="{{ $videogame->image ? asset($videogame->image) : asset('image/placeholder.png') }}"
                     alt="Copertina del videogioco" class="card-img-top img-fluid object-fit-fill" style="height: 500px;">
+
                 <span id="rating">{{ $videogame->rating ? $videogame->rating : 'N/A' }}</span>
 
                 <div id="consoles">

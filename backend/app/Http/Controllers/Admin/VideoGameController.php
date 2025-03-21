@@ -53,7 +53,7 @@ class VideoGameController extends Controller
         $newvideoGame->description = $data['description'];
         if (array_key_exists('image', $data)) {
             $img_url = Storage::putFile('uploads', $data['image']);
-            $newvideoGame->image = $img_url;
+            $newvideoGame->image = 'storage/' . $img_url; // Restituisci l'URL corretto
         }
         $newvideoGame->save();
 
