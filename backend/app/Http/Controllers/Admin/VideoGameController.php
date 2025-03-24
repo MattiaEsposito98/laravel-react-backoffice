@@ -25,7 +25,7 @@ class VideoGameController extends Controller
     {
 
         // $videogames = VideoGame::all();
-        $videoGames = VideoGame::with('consoles',)->get();
+        $videoGames = VideoGame::with('consoles')->get();
         return view('videogames.index', compact('videoGames'));
     }
 

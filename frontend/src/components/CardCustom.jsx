@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 function CardCustom({ game }) {
   const displayedConsoles = new Set(); // Per tenere traccia delle console già visualizzate
+  if (!game) return null;
 
   return (
     <Card className={style.card}>
@@ -26,23 +27,24 @@ function CardCustom({ game }) {
 
         <Card.Subtitle className={style.cardSubtitle}>{game.genre}</Card.Subtitle>
         <Card.Text>
-          {game.consoles.map((console) => {
-            // Controlla se la console è già stata visualizzata
-            if (console.name.includes('Playstation') && !displayedConsoles.has('Playstation')) {
-              displayedConsoles.add('Playstation'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faPlaystation} key={console.id} className="me-2 text-light" />;
-            } else if (console.name.includes('Xbox') && !displayedConsoles.has('Xbox')) {
-              displayedConsoles.add('Xbox'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faXbox} key={console.id} className="me-2 text-light" />;
-            } else if (console.name === 'PC' && !displayedConsoles.has('PC')) {
-              displayedConsoles.add('PC'); // Aggiungi a Set
-            } else if (console.name === 'Nintendo Switch' && !displayedConsoles.has('Nintendo Switch')) {
-              displayedConsoles.add('Nintendo Switch'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faGamepad} key={console.id} className="me-2 text-light" />;
-            }
-            return null;
-          })}
+          {game.consoles && Array.isArray(game.consoles) && game.consoles.length > 0 ? (
+            game.consoles.map((console) => {
+              if (console.name.includes('Playstation')) {
+                return <FontAwesomeIcon icon={faPlaystation} key={console.id} className="me-2 text-light" />;
+              } else if (console.name.includes('Xbox')) {
+                return <FontAwesomeIcon icon={faXbox} key={console.id} className="me-2 text-light" />;
+              } else if (console.name === 'PC') {
+                return <FontAwesomeIcon icon={faDesktop} key={console.id} className="me-2 text-light" />;
+              } else if (console.name === 'Nintendo Switch') {
+                return <FontAwesomeIcon icon={faGamepad} key={console.id} className="me-2 text-light" />;
+              }
+              return null;
+            })
+          ) : (
+            <span>No consoles available</span>
+          )}
         </Card.Text>
+
         <Link to={`/${game.id}`}>
           <Button variant="primary" className={style.btnPrimary}>Dettagli</Button>
         </Link>

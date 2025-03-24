@@ -31,7 +31,7 @@ class VideoGamesController extends Controller
     {
         $query = $request->input('query');
 
-        $games = VideoGame::where('title', 'LIKE', "%{$query}")->get();
+        $games = VideoGame::where('title', 'LIKE', "%{$query}%")->with('consoles')->get();
 
         return response()->json($games);
     }

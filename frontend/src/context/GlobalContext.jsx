@@ -1,19 +1,25 @@
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 
-export const GlobalContext = createContext()
+export const GlobalContext = createContext();
 
 export default function GlobalProvider({ children }) {
-  const [videoGames, setVideoGames] = useState([])
-  const [search, setSearch] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
+  const [videoGames, setVideoGames] = useState([]);
+  const [search, setSearch] = useState('');
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    fetchVideoGames(); // Carica tutti i videogiochi all'inizio
+  }, []);
+
+  // Funzione per recuperare tutti i videogiochi
   function fetchVideoGames() {
     setIsLoading(true);
-    const params = search ? { search } : {};
-    axios.get(import.meta.env.VITE_API_URL, { params })
+    axios.get(import.meta.env.VITE_API_URL)
       .then(res => {
         setVideoGames(res.data.data);
+        setResults(res.data.data); // Imposta i risultati iniziali
       })
       .catch(err => {
         console.error(err);
@@ -21,15 +27,29 @@ export default function GlobalProvider({ children }) {
       .finally(() => setIsLoading(false));
   }
 
+  // Funzione per cercare i videogiochi
+  function searchVideoGames(query) {
+    setSearch(query);
+    if (!query) {
+      setResults(videoGames); // Se non c'è ricerca, mostra tutti i videogiochi
+      return;
+    }
 
-  useEffect(() => {
-    fetchVideoGames();
-  }, []);
+    // Effettua la chiamata API per cercare i videogiochi
+    axios
+      .get(`http://localhost:8000/api/videogames/search?query=${query}`)
+      .then(res => {
+        console.log(res)
+        setResults(res.data); // Imposta i risultati della ricerca
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 
   return (
-    <GlobalContext.Provider value={{ videoGames, fetchVideoGames, isLoading, setIsLoading }}>
+    <GlobalContext.Provider value={{ videoGames, results, search, setSearch, searchVideoGames, isLoading }}>
       {children}
     </GlobalContext.Provider>
   );
-};
-
+}
