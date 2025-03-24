@@ -2,6 +2,8 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { GlobalContext } from "../context/GlobalContext"
+import Loader from "../components/Loader"
+import CardShow from '../components/CardShow'
 
 export default function Show() {
 
@@ -27,14 +29,23 @@ export default function Show() {
 
 
   if (!videoGame) {
-    return <div>Loading...</div>;
+    return <div><Loader /></div>;
   }
 
   return (
     <>
       <div className="container">
-        <h1>show</h1>
-        <p>{videoGame.title}</p>
+        <article>
+          <img
+            src={videoGame.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/${videoGame.image}` : '/placeholder.png'}
+            alt={videoGame.title}
+            className="card-img-top img-fluid object-fit-fill mt-2 rounded"
+            style={{ height: '500px' }}
+          />
+        </article>
+
+
+        <CardShow videoGame={videoGame} />
       </div>
     </>
   )

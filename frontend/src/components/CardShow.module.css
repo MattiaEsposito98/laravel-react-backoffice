@@ -1,0 +1,8 @@
+
+.customAccordionHeader button {
+  background-color: rgb(253, 73, 73) !important;
+  color: white !important;
+  font-weight: bold;
+  margin-top: 1px;
+}
+

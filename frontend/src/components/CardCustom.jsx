@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { faPlaystation } from '@fortawesome/free-brands-svg-icons';
 import { faXbox } from '@fortawesome/free-brands-svg-icons';
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function CardCustom({ game }) {
@@ -35,7 +36,9 @@ function CardCustom({ game }) {
               return <FontAwesomeIcon icon={faXbox} key={console.id} className="me-2" />;
             } else if (console.name === 'PC' && !displayedConsoles.has('PC')) {
               displayedConsoles.add('PC'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faDesktop} key={console.id} className="me-2" />;
+            } else if (console.name === 'Nintendo Switch' && !displayedConsoles.has('Nintendo Switch')) {
+              displayedConsoles.add('Nintendo Switch'); // Aggiungi a Set
+              return <FontAwesomeIcon icon={faGamepad} key={console.id} className="me-2" />;
             }
             return null;
           })}
