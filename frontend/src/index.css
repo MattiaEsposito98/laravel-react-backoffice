@@ -13,3 +13,11 @@ body{
 #header {
   background-color:rgb(209, 33, 33)  ;
 }
+
+#rating {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  padding: 20px;
+  font-size: 20px;
+}

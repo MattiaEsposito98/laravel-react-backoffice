@@ -5,6 +5,9 @@ import GlobalProvider from './context/GlobalContext'
 import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import Show from "./pages/Show";
+import 'animate.css';
+
+
 function App() {
 
   return (

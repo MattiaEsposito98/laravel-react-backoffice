@@ -30,15 +30,15 @@ function CardCustom({ game }) {
             // Controlla se la console è già stata visualizzata
             if (console.name.includes('Playstation') && !displayedConsoles.has('Playstation')) {
               displayedConsoles.add('Playstation'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faPlaystation} key={console.id} className="me-2" />;
+              return <FontAwesomeIcon icon={faPlaystation} key={console.id} className="me-2 text-light" />;
             } else if (console.name.includes('Xbox') && !displayedConsoles.has('Xbox')) {
               displayedConsoles.add('Xbox'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faXbox} key={console.id} className="me-2" />;
+              return <FontAwesomeIcon icon={faXbox} key={console.id} className="me-2 text-light" />;
             } else if (console.name === 'PC' && !displayedConsoles.has('PC')) {
               displayedConsoles.add('PC'); // Aggiungi a Set
             } else if (console.name === 'Nintendo Switch' && !displayedConsoles.has('Nintendo Switch')) {
               displayedConsoles.add('Nintendo Switch'); // Aggiungi a Set
-              return <FontAwesomeIcon icon={faGamepad} key={console.id} className="me-2" />;
+              return <FontAwesomeIcon icon={faGamepad} key={console.id} className="me-2 text-light" />;
             }
             return null;
           })}
