@@ -17,7 +17,7 @@ export default function CustomNavbar() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Cerca"
+              placeholder="Cerca per nome..."
               className="me-2"
               aria-label="Search"
             />

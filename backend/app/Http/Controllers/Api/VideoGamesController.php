@@ -26,4 +26,13 @@ class VideoGamesController extends Controller
             "data" => $videogame
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $games = VideoGame::where('title', 'LIKE', "%{$query}")->get();
+
+        return response()->json($games);
+    }
 }
