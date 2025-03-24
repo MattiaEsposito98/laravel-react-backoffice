@@ -1,7 +1,6 @@
-// Navbar.jsx
 import { useContext } from 'react';
 import { Navbar, Container, Form, Button, Nav } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 
 export default function CustomNavbar() {
@@ -16,19 +15,27 @@ export default function CustomNavbar() {
   function handleSubmit(e) {
     e.preventDefault();
     searchVideoGames(search);
+    navigate('/');
   }
 
   return (
     <Navbar expand="lg">
       <Container fluid>
-        <Navbar.Brand className="text-white border rounded p-2 fw-bold">
-          VideoGames
+        <Navbar.Brand >
+          <Button
+            id='logo'
+            variant="danger"
+            onClick={() => navigate(`/`)}
+            className="text-white border rounded fw-bold p-2 fs-5"
+          >
+            VideoGames
+          </Button>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto">
             <Button
-              variant="outline-dark"
+              variant="dark"
               className="text-white border"
               disabled={location.pathname === '/'}
               onClick={() => navigate(`/`)}

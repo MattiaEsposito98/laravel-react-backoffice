@@ -1,3 +1,4 @@
+// GlobalContext.js
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 
@@ -13,7 +14,6 @@ export default function GlobalProvider({ children }) {
     fetchVideoGames(); // Carica tutti i videogiochi all'inizio
   }, []);
 
-  // Funzione per recuperare tutti i videogiochi
   function fetchVideoGames() {
     setIsLoading(true);
     axios.get(import.meta.env.VITE_API_URL)
@@ -27,7 +27,6 @@ export default function GlobalProvider({ children }) {
       .finally(() => setIsLoading(false));
   }
 
-  // Funzione per cercare i videogiochi
   function searchVideoGames(query) {
     setSearch(query);
     if (!query) {
@@ -35,11 +34,9 @@ export default function GlobalProvider({ children }) {
       return;
     }
 
-    // Effettua la chiamata API per cercare i videogiochi
     axios
       .get(`http://localhost:8000/api/videogames/search?query=${query}`)
       .then(res => {
-        console.log(res)
         setResults(res.data); // Imposta i risultati della ricerca
       })
       .catch(err => {
