@@ -1,4 +1,3 @@
-// GlobalContext.js
 import { createContext, useEffect, useState } from "react";
 import axios from 'axios';
 
@@ -11,7 +10,7 @@ export default function GlobalProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchVideoGames(); // Carica tutti i videogiochi all'inizio
+    fetchVideoGames();
   }, []);
 
   function fetchVideoGames() {
@@ -35,7 +34,7 @@ export default function GlobalProvider({ children }) {
     }
 
     axios
-      .get(`http://localhost:8000/api/videogames/search?query=${query}`)
+      .get(`${import.meta.env.VITE_API_URL}/search?query=${query}`)
       .then(res => {
         setResults(res.data); // Imposta i risultati della ricerca
       })

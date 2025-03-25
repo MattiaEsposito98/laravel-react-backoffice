@@ -13,9 +13,9 @@ export default function Show() {
   const videoGame = videoGames.find(game => game.id === parseInt(id));
 
   // Mostra un loader se i dati non sono ancora disponibili
-  // if (isLoading || !videoGame) {
-  //   return <div><Loader /></div>;
-  // }
+  if (isLoading || !videoGame) {
+    return <div><Loader /></div>;
+  }
 
   return (
     <div className="container">

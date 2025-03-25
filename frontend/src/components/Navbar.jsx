@@ -1,6 +1,7 @@
+// CustomNavbar.jsx
 import { useContext } from 'react';
 import { Navbar, Container, Form, Button, Nav } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
 
 export default function CustomNavbar() {
@@ -9,23 +10,30 @@ export default function CustomNavbar() {
   const navigate = useNavigate();
 
   function handleChange(e) {
-    setSearch(e.target.value);
+    setSearch(e.target.value); // Aggiorna il valore di ricerca
+  }
+
+  function home() {
+    navigate('/')
+    window.location.reload();
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    searchVideoGames(search);
+    searchVideoGames(search); // Esegui la ricerca
     navigate('/');
+    setSearch('')
   }
 
   return (
     <Navbar expand="lg">
       <Container fluid>
-        <Navbar.Brand >
+
+        <Navbar.Brand>
           <Button
             id='logo'
             variant="danger"
-            onClick={() => navigate(`/`)}
+            onClick={home}
             className="text-white border rounded fw-bold p-2 fs-5"
           >
             VideoGames
@@ -38,9 +46,9 @@ export default function CustomNavbar() {
               variant="dark"
               className="text-white border"
               disabled={location.pathname === '/'}
-              onClick={() => navigate(`/`)}
+              onClick={() => navigate(-1)}
             >
-              Home
+              Back
             </Button>
           </Nav>
           <Form className="d-flex" onSubmit={handleSubmit}>
@@ -58,6 +66,6 @@ export default function CustomNavbar() {
           </Form>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </Navbar >
   );
 }
