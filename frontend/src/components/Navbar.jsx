@@ -20,7 +20,7 @@ export default function CustomNavbar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    searchVideoGames(search); // Esegui la ricerca
+    searchVideoGames(search); // Esegue la ricerca
     navigate('/');
     setSearch('')
   }

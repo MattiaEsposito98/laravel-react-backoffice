@@ -93,7 +93,7 @@ class VideoGameController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'genre' => 'nullable|string|max:255', // Assicurati che sia nullable
+            'genre' => 'nullable|string|max:255',
             'release_date' => 'required|date',
             'description' => 'nullable|string',
             'rating' => 'nullable|numeric',
@@ -101,7 +101,7 @@ class VideoGameController extends Controller
         ]);
 
         $videogame->title = $request->input('title');
-        $videogame->genre = $request->input('genre') ?? $videogame->genre; // Usa il valore attuale se non fornito
+        $videogame->genre = $request->input('genre') ?? $videogame->genre;
         $videogame->release_date = $request->input('release_date');
         $videogame->description = $request->input('description');
         $videogame->rating = $request->input('rating');
