@@ -22,10 +22,13 @@ export default function HomePage() {
             </div>
           ))
         ) : (
-          <div className="d-flex flex-column justify-content-center align-items-center gap-3" style={{ height: '100vh' }}>
-            <Button variant="dark" className="btn btn-outline-dark text-white" onClick={home}>Torna alla Home</Button>
+          <div className="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
+            <Button variant="dark" className="btn btn-outline-dark text-white" onClick={home}>
+              Torna alla Home
+            </Button>
             <p className="badge rounded text-bg-danger p-3">Nessun risultato trovato</p>
           </div>
+
 
 
         )
