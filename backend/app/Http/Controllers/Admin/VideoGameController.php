@@ -133,7 +133,7 @@ class VideoGameController extends Controller
     {
 
         if ($videogame->image) {
-            Storage::delete('public/' . $videogame->image);
+            Storage::delete($videogame->image);
         }
         $videogame->consoles()->detach();
         $videogame->delete();
