@@ -16,7 +16,7 @@ function CardCustom({ game }) {
     <Card className={style.card}>
       <Card.Img
         variant="top"
-        src={game.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/${game.image}` : './public/placeholder.png'}
+        src={game.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/storage/${game.image}` : './public/placeholder.png'}
         className={style.cardImg}
       />
       <Card.Body className={style.cardBody}>

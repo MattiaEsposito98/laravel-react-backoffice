@@ -54,7 +54,8 @@ class VideoGameController extends Controller
         $newvideoGame->rating = $data['rating'];
         if (array_key_exists('image', $data)) {
             $img_url = Storage::putFile('uploads', $data['image']);
-            $newvideoGame->image = 'storage/' . $img_url;
+            // $newvideoGame->image = 'storage/' . $img_url;
+            $newvideoGame->image = $img_url;
         }
         $newvideoGame->save();
 
@@ -112,11 +113,11 @@ class VideoGameController extends Controller
                 Storage::delete($videogame->image);
             }
             // Carica la nuova immagine
-            $img_url = Storage::putFile('uploads', $request->file('image'));
-            $videogame->image = 'storage/' . $img_url;
+            $img_url = $request->file('image')->store('uploads', 'public'); // Salva nella cartella 'uploads'
+            $videogame->image = $img_url; //Salva il nuovo percorso relativo
         }
 
-        $videogame->save(); // Salva le modifiche
+        $videogame->save();
 
         $videogame->consoles()->sync($request->input('consoles'));
 

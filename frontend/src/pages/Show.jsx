@@ -21,7 +21,7 @@ export default function Show() {
     <div className="container">
       <article className="position-relative">
         <img
-          src={videoGame.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/${videoGame.image}` : '/placeholder.png'}
+          src={videoGame.image ? `${import.meta.env.VITE_LARAVEL_API_URL}/storage/${videoGame.image}` : '/placeholder.png'}
           alt={videoGame.title}
           className="card-img-top img-fluid object-fit-fill mt-2 rounded animate__animated animate__backInDown"
           style={{ height: '500px' }}

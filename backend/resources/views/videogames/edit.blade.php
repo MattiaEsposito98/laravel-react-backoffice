@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Aggiungi un gioco')
+@section('title', 'Modifica un gioco')
 
 @section('content')
     <div class="container-sm  d-flex justify-content-center mt-5">
@@ -29,7 +29,7 @@
                     <input type="file" name="image" id="image">
                 </div>
                 <img class="w-25"
-                    src="{{ $videogame->image ? asset($videogame->image) : asset('image/placeholder.png') }}"
+                    src="{{ $videogame->image ? asset('storage/' . $videogame->image) : asset('image/placeholder.png') }}"
                     alt="Copertina videogioco">
             </section>
 
