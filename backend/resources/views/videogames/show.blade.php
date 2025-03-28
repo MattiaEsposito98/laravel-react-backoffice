@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@section('title', $videogame->title)
+
 @section('content')
     <div class="container">
         <div class="card m-1 shadow-lg border-0 overflow-hidden" style="max-width: 100%;">
