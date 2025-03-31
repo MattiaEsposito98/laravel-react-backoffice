@@ -54,7 +54,7 @@ class VideoGameController extends Controller
         $newvideoGame->rating = $data['rating'];
         if (array_key_exists('image', $data)) {
             $img_url = Storage::putFile('uploads', $data['image']);
-            // $newvideoGame->image = 'storage/' . $img_url;
+
             $newvideoGame->image = $img_url;
         }
         $newvideoGame->save();

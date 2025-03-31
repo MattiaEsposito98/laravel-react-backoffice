@@ -6,7 +6,6 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="mb-4">Lista Videogiochi</h1>
-            {{-- <a class="btn btn-dark" href="{{ route('videogames.create') }}">Aggiungi un videogioco</a> --}}
             <a href="{{ route('videogames.create') }}" class="button-dark">
                 Aggiungi un videogioco
             </a>
